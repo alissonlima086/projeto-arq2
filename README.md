@@ -1,14 +1,13 @@
 # Este projeto foi realizado para a matéria de Arquitetura e Organização de Computadores 2 da UNITINS
 
+Projeto desenvolvido pelos alunos: Alisson de Oliveira Lima; Thallyson Glória Alves.
+
 ## Projeto
 
 A ideia inicial do projeto foi desenvolver uma trava de porta que destravasse via leitura de digital, que guardasse log e que verificasse a pessoa em um sistema externo, no entanto, logo vimos que não seria possivel dado as limitações do simulador. Portando, para abstrair a ideia do projeto, estaremos fazendo uma trava de porta que destrave via sensor de movimento e que guarde o log dos dois ultimos horarios de abertura.
 
 
 O projeto foi desenvolvido utilizando a plataforma do Tinkercad.
-
-Projeto desenvolvido pelos alunos: Alisson de Oliveira Lima; Thallyson Glória Alves.
-
 
 ---
 
