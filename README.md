@@ -23,3 +23,23 @@ SERVO1 - 1 - Posicional Micro servo
 D2 - 1 - Vermelho LED
 
 R1, R2 - 	2 -	1 kΩ Resistor
+
+---
+
+## Visão Esquemática
+
+A seguir, a visão esquemática do projeto com os componentes:
+
+![image](https://github.com/user-attachments/assets/dda70a51-02aa-417b-acac-1316896eefd3)
+*Houve uma questão em que um dos leds ficou isolado na esquematização, mesmo que na arquitetura ele esteja conectado e esteja completamente funcional, não conseguimos encontrar a razão e deixamos como está, visto que afeta apenas a geração da visão esquematica.
+
+---
+
+## Arquitetura
+
+A seguir, a arquitetura do arduino com seus componentes conectados:
+
+![Projeto Arq 2 (1)](https://github.com/user-attachments/assets/16c55541-f8bb-4e42-84f3-5a599d4261df)
+
+
+
