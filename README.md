@@ -44,8 +44,58 @@ A seguir, a visão esquemática do projeto com os componentes:
 
 A seguir, a arquitetura do arduino com seus componentes conectados:
 
-![Projeto Arq 2 (2)](https://github.com/user-attachments/assets/3b2584a7-b45a-4ed8-a2a3-288e82990e76)
+![Projeto Arq 2 (3)](https://github.com/user-attachments/assets/89e773c3-0a31-4044-b0e4-c89647153ad6)
 
+---
 
+## Código
 
+Iniciamos com os imports que serão utilizados para o controle do Servo Motor e com o Display.
+```
+#include <Servo.h>
+#include <Wire.h>
+#include <LiquidCrystal_I2C.h>
+```
 
+A seguir declaramos as variaveis de configuração do Display, configuração dos pino, controle do Servo Motor, status de log e controle da porta.
+```
+LiquidCrystal_I2C lcd(0x20, 16, 2);
+
+const int pirPin = 2;
+const int ledVerde = 3;
+const int ledVermelho = 4;
+const int servoPin = 6;
+
+Servo servoMotor;
+
+String ultimoAcesso = "------";
+String penultimoAcesso = "------";
+
+bool portaAberta = false;
+```
+
+A seguir o inicio das configurações, iniciando as configurações do serial para os logs, iniciando o Display, Input e Output para os sensores e iniciando o Servo motor, definindo um estado "default" para o sistema.
+```
+void setup() {
+  // Serial
+  Serial.begin(9600);
+
+  // Display
+  lcd.init();
+  lcd.backlight();
+  lcd.setCursor(0, 0);
+
+  // Pinos (entrada de movimento saida de leds)
+  pinMode(pirPin, INPUT);
+  pinMode(ledVerde, OUTPUT);
+  pinMode(ledVermelho, OUTPUT);
+
+  // Servo Motor
+  servoMotor.attach(servoPin);
+  fecharPorta();
+
+  delay(2000);
+  lcd.clear();
+  atualizarDisplay();
+}
+```
