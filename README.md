@@ -99,3 +99,63 @@ void setup() {
   atualizarDisplay();
 }
 ```
+
+A seguir um loop que está fazendo a leitura do sensor de movimento, que chama o liberarAcesso() caso seja detectado algum movimento.
+```
+void loop() {
+  int movimento = digitalRead(pirPin);
+
+  if (movimento == HIGH && !portaAberta) {
+    liberarAcesso();
+  }
+
+  delay(200);
+}
+
+```
+
+A seguir a função de liberarAcesso(), que define a porta aberta como true, imprime os logs no display e divide chama outras funções para executar a atualização do display, abertura e fechamento da porta.
+```
+void liberarAcesso() {
+  portaAberta = true;
+
+  // Atualizar logs
+  penultimoAcesso = ultimoAcesso;
+  ultimoAcesso = horaAtual();
+
+  Serial.println("Log:"); 
+  Serial.println("Penultimo acesso- " + penultimoAcesso);
+  Serial.println("Ultimo acesso - " + ultimoAcesso);
+
+  atualizarDisplay();
+
+  abrirPorta();
+
+  delay(5000);
+
+  fecharPorta();
+  portaAberta = false;
+
+  delay(1000);
+  digitalWrite(ledVermelho, LOW);
+}
+```
+
+A seguir a função de abrir e fechar a porta que também executa a execução dos leds.
+```
+void abrirPorta() {
+  servoMotor.write(90);
+  
+  // Ativar led verde
+  digitalWrite(ledVerde, HIGH);
+  digitalWrite(ledVermelho, LOW);
+}
+
+void fecharPorta() {
+  servoMotor.write(0);
+  
+  // Ativar led vermelho
+  digitalWrite(ledVerde, LOW);
+  digitalWrite(ledVermelho, HIGH);
+}
+```
