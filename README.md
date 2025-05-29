@@ -141,7 +141,7 @@ void liberarAcesso() {
 }
 ```
 
-A seguir a função de abrir e fechar a porta que também executa a execução dos leds.
+A seguir a função de abrir e fechar a porta que também executam a atualização dos leds.
 ```
 void abrirPorta() {
   servoMotor.write(90);
@@ -157,5 +157,30 @@ void fecharPorta() {
   // Ativar led vermelho
   digitalWrite(ledVerde, LOW);
   digitalWrite(ledVermelho, HIGH);
+}
+```
+
+A seguir a atualização do display com as informações dos logs.
+```
+void atualizarDisplay() {
+  lcd.clear();
+  lcd.setCursor(0, 0);
+  lcd.print("Ult:" + ultimoAcesso);
+  lcd.setCursor(0, 1);
+  lcd.print("Pen:" + penultimoAcesso);
+}
+```
+
+E por último uma função que retorna uma string de minutos e segundos sendo utilizado para registrar o log.
+```
+String horaAtual() {
+  unsigned long segundos = millis() / 1000;
+  unsigned long minutos = segundos / 60;
+  segundos = segundos % 60;
+  
+  char buffer[10];
+  sprintf(buffer, "%02lu:%02lu", minutos, segundos);
+  
+  return String(buffer);
 }
 ```
