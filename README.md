@@ -11,9 +11,15 @@ A ideia inicial do projeto foi desenvolver uma trava de porta que destravasse vi
 Para o desenvolvimento deste projeto foram utilizados:
 
 PIR1 - 1 - Sensor PIR
+
 U1 - 1 - Arduino Uno R3
+
 D1 - 1 - Verde LED
+
 U2 - 1 - Baseado em MCP23008, 32 (0x20) LCD 16 x 2 (I2C)
+
 SERVO1 - 1 - Posicional Micro servo
+
 D2 - 1 - Vermelho LED
+
 R1, R2 - 	2 -	1 kΩ Resistor
