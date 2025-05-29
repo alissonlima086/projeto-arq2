@@ -39,7 +39,8 @@ A seguir, a visão esquemática do projeto com os componentes:
 
 A seguir, a arquitetura do arduino com seus componentes conectados:
 
-![Projeto Arq 2 (1)](https://github.com/user-attachments/assets/16c55541-f8bb-4e42-84f3-5a599d4261df)
+![Projeto Arq 2 (2)](https://github.com/user-attachments/assets/3b2584a7-b45a-4ed8-a2a3-288e82990e76)
+
 
 
 
