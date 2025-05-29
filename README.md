@@ -8,6 +8,8 @@ A ideia inicial do projeto foi desenvolver uma trava de porta que destravasse vi
 O projeto foi desenvolvido utilizando a plataforma do Tinkercad.
 
 Projeto desenvolvido pelos alunos: Alisson de Oliveira Lima; Thallyson Glória Alves.
+
+
 ---
 
 ## Componentes
