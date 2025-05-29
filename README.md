@@ -197,3 +197,27 @@ String horaAtual() {
   return String(buffer);
 }
 ```
+
+---
+
+## Limitações
+
+Como anteriormente mencionado, houveram limitações no projeto devido falta de um ambiente fisico para desenvolvimento, aqui algumas das dificuldades pontuadas:
+
+- Impossibilidade de conexão com aplicações externas, como servidores e dispositivos de armazenamento;
+- Falta de alguns sensores nos simuladores, como o de digital e o de relogio;
+
+## Melhorias
+
+Algumas melhorias que poderiam ser realizadas no projeto incluem:
+
+- Exportação de dados de log para um dispositivo ou servidor externo;
+- Adicionar autenticação, juntamente a uma conexão a um banco de dados;
+
+## Problemas
+
+Houveram alguns problemas e dificuldades durante o projeto, desde a concepção até o desenvolvimento até a versão final, dentre eles:
+- Limitação dos simuladores;
+- Organização dos circuitos;
+- Abstração de componentes;
+- Algumas logicas específicas de algumas partes do codigo;
