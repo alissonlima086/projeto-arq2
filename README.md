@@ -108,10 +108,30 @@ void loop() {
   if (movimento == HIGH && !portaAberta) {
     liberarAcesso();
   }
+  
+  if (portaAberta) {
+    movimento = digitalRead(pirPin);
+
+    if (movimento == LOW) {
+      // Conta 5 segundos
+      unsigned long tempoInicio = millis();
+      
+      while (millis() - tempoInicio < 5000) {
+        movimento = digitalRead(pirPin);
+        // Reseta o tempo se houver movimento
+        if (movimento == HIGH) {
+          tempoInicio = millis();
+        }
+      }
+
+      // Fecha a porta depois de 5 seg sem movimentos
+      fecharPorta();
+      portaAberta = false;
+    }
+  }
 
   delay(200);
 }
-
 ```
 
 A seguir a função de liberarAcesso(), que define a porta aberta como true, imprime os logs no display e divide chama outras funções para executar a atualização do display, abertura e fechamento da porta.
@@ -119,25 +139,16 @@ A seguir a função de liberarAcesso(), que define a porta aberta como true, imp
 void liberarAcesso() {
   portaAberta = true;
 
-  // Atualizar logs
+  // Atualiza logs
   penultimoAcesso = ultimoAcesso;
   ultimoAcesso = horaAtual();
 
   Serial.println("Log:"); 
-  Serial.println("Penultimo acesso- " + penultimoAcesso);
+  Serial.println("Penultimo acesso - " + penultimoAcesso);
   Serial.println("Ultimo acesso - " + ultimoAcesso);
 
   atualizarDisplay();
-
   abrirPorta();
-
-  delay(5000);
-
-  fecharPorta();
-  portaAberta = false;
-
-  delay(1000);
-  digitalWrite(ledVermelho, LOW);
 }
 ```
 
@@ -157,6 +168,8 @@ void fecharPorta() {
   // Ativar led vermelho
   digitalWrite(ledVerde, LOW);
   digitalWrite(ledVermelho, HIGH);
+  delay(2000);
+  digitalWrite(ledVermelho, LOW);
 }
 ```
 
