@@ -1,9 +1,10 @@
 #include <Servo.h>
 #include <Wire.h>
 #include <LiquidCrystal_I2C.h>
+#include <Adafruit_LiquidCrystal.h>
 
 // Definições
-LiquidCrystal_I2C lcd(0x20, 16, 2);
+Adafruit_LiquidCrystal lcd(0);
 
 const int pirPin = 2;
 const int ledVerde = 3;
@@ -21,11 +22,9 @@ bool portaAberta = false;
 void setup() {
   // Serial
   Serial.begin(9600);
+  Wire.begin();
 
-  // Display
-  lcd.init();
-  lcd.backlight();
-  lcd.setCursor(0, 0);
+  lcd.begin(16, 2);
 
   // Pinos (entrada de movimento saida de leds)
   pinMode(pirPin, INPUT);
