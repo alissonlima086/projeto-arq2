@@ -55,11 +55,12 @@ Iniciamos com os imports que serão utilizados para o controle do Servo Motor e 
 #include <Servo.h>
 #include <Wire.h>
 #include <LiquidCrystal_I2C.h>
+#include <Adafruit_LiquidCrystal.h>
 ```
 
 A seguir declaramos as variaveis de configuração do Display, configuração dos pino, controle do Servo Motor, status de log e controle da porta.
 ```
-LiquidCrystal_I2C lcd(0x20, 16, 2);
+Adafruit_LiquidCrystal lcd(0);
 
 const int pirPin = 2;
 const int ledVerde = 3;
@@ -81,9 +82,7 @@ void setup() {
   Serial.begin(9600);
 
   // Display
-  lcd.init();
-  lcd.backlight();
-  lcd.setCursor(0, 0);
+  lcd.begin(16, 2);
 
   // Pinos (entrada de movimento saida de leds)
   pinMode(pirPin, INPUT);
